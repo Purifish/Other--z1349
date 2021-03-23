@@ -168,7 +168,7 @@ int Maxi(int alpha, int beta, int depth, int maxDepth, char* board) // AI uses m
 	i = rand() % 9; // randomize which move AI looks at first
 	for (int count = 0; count < 9; count++, i = (i + 1) % 9)
 	{
-		if (board[i] < 79) // empty slot
+		if (board[i] < 'O') // empty slot
 		{
 			temp = board[i];
 			board[i] = 'X';
@@ -208,7 +208,7 @@ int Mini(int alpha, int beta, int depth, int maxDepth, char* board)
 	i = rand() % 9;
 	for (int count = 0; count < 9; count++, i = (i + 1) % 9)
 	{
-		if (board[i] < 79)
+		if (board[i] < 'O')
 		{
 			temp = board[i];
 			board[i] = 'O';
