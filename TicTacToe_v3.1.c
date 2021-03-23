@@ -84,7 +84,7 @@ void play(void)
 {
 	int i, turn, result, place, Depth = 0;
 	char board[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' }; // Actual board
-	char temp[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' }; // board representative (for AI use)
+	char temp[9] = { '1', '2', '3', '4', '5', '6', '7', '8', '9' }; // board represntative (for AI use)
 
 	printf("Enter 1 to go first, any other key to go second:\n"); 
 	turn = (getchar() == '1') ? 1 : 2;
@@ -107,7 +107,7 @@ void play(void)
 
 	for (i = 0; i < 9; i++)
 	{
-		Depth = 9 - i; // There aren't too many different positions, thus AI can in fact solve the game by looking ahead the max number of moves left
+		Depth = 9 - i; // There are'nt too many different positions, thus AI can in fact solve the game by looking ahead the max number of moves left
 		if (i % 2 == 0 && turn == 1 || i % 2 == 1 && turn == 2) // user's turn
 		{
 			printf("Choose slot (1 to 9)\n");
@@ -123,6 +123,7 @@ void play(void)
 		else
 		{
 			printf("Computer's turn\n");
+			ChangeFont('g');
 			for (int j = 0; j < BARCOUNT; j++)
 				putchar(DBAR);
 			putchar('\r');
@@ -130,7 +131,6 @@ void play(void)
 				place = Mini(-1000000, 1000000, Depth, Depth, temp);
 			else
 				place = Maxi(-1000000, 1000000, Depth, Depth, temp);
-
 			for (int j = 0; j < BARCOUNT; j++)
 			{
 				delay(20);
@@ -138,6 +138,7 @@ void play(void)
 			}	
 			temp[place - 1] = board[place - 1] = turn == 1 ? 'O' : 'X';
 			ClearScreen();
+			ChangeFont('w');
 			Display(3, 3, board);
 		}
 		// check if game has ended
